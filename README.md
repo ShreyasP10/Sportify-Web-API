@@ -1,114 +1,145 @@
-🎵 Spotify Web API Controller – Setup & Usage Guide
-This project is a web app built using JavaScript and the Spotify Web API. It allows you to control your Spotify playback (play, pause, next, shuffle, device switch, etc.) directly from the browser.
+# 🎵 Spotify Web API Controller
 
-⚠️ Note: Spotify Premium account is required for playback control features (play, pause, shuffle, etc.).
+A responsive web app built using **JavaScript**, **HTML**, and the **Spotify Web API** that allows users to control their Spotify playback from the browser.
 
-🛠️ Step-by-Step Setup
-✅ 1. Create a Spotify Developer Account
-Visit: https://developer.spotify.com/dashboard
+> ⚠️ **Note**: A **Spotify Premium** account is required for playback control features (play, pause, shuffle, skip, etc.).
 
-Log in using your Spotify account.
+---
 
-Click "Create an App".
+## 🌟 Features
 
-Fill in:
+- 🎵 Play, pause, skip, shuffle Spotify tracks  
+- 🔁 Switch between connected Spotify devices  
+- 📜 View and choose from your Spotify playlists  
+- 🎨 View current track title, artist name, and album art  
+- 💾 Save and reuse quick device+playlist combinations  
+- 🔐 Secure authorization using Client ID & Client Secret  
+- 🔓 Logout functionality to clear session and reset
 
-App name: Spotify Web Controller (or anything you like)
+---
 
-Description: Web-based Spotify player controller using Spotify Web API
+## 🛠️ Step-by-Step Setup
 
-Accept the terms and create the app.
+### ✅ 1. Create a Spotify Developer App
 
-🔑 2. Set Redirect URI
-Open your created app → click "Edit Settings".
+1. Visit: [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+2. Log in with your Spotify account
+3. Click **Create an App**
+4. Fill in the details:
+   - **App Name**: `Spotify Web Controller` (or anything you like)
+   - **Description**: `Web-based Spotify controller using Spotify Web API`
+5. Agree to terms and click **Create**
 
-In the Redirect URIs field, add:
+---
 
-For local testing:
+### 🔑 2. Set Redirect URI
 
-arduino
-Copy
-Edit
+Go to your app → **Edit Settings** → under **Redirect URIs**, add:
+
+#### For local testing:
+
 http://127.0.0.1:5500/index.html
-For GitHub Pages (replace with your actual GitHub username and repo):
 
-arduino
+graphql
 Copy
 Edit
-https://your-github-username.github.io/SpotifyWebAPI/
-Click Add and then Save.
 
-📥 3. Clone or Download This Repository
-bash
+#### For GitHub Pages deployment (replace `your-username`):
+
+https://your-username.github.io/Spotify-Web-API/
+
+yaml
 Copy
 Edit
-git clone https://github.com/your-username/SpotifyWebAPI.git
-cd SpotifyWebAPI
-Or just Download ZIP and extract it.
 
-🌐 4. Host the Project
-Choose one of the following:
+Click **Add** and then **Save**.
 
-Option A: Run Locally (Using VS Code + Live Server)
-Install Live Server extension in VS Code.
+---
 
-Open this project folder in VS Code.
+### 📥 3. Clone or Download the Repository
 
-Open index.html and right-click → Open with Live Server.
+#### Option A: Clone via Git
 
-Your project should run on:
+```bash
+git clone https://github.com/your-username/Spotify-Web-API.git
+cd Spotify-Web-API
+```
+Option B: Download ZIP
+Click the green Code button
 
-arduino
-Copy
-Edit
+Choose Download ZIP
+
+Extract the folder and open it
+
+🌐 4. Run the App
+Option A: Run Locally (with Live Server)
+Open the folder in VS Code
+
+Install the Live Server extension
+
+Right-click index.html → Open with Live Server
+
+Access:
 http://127.0.0.1:5500/index.html
-Option B: Deploy on GitHub Pages
-Push the project to a GitHub repository.
 
-Go to Repo → Settings → Pages.
+Option B: Deploy to GitHub Pages
+Push your project to GitHub
 
-Under "Source", choose the branch (main) and folder (/root or /docs).
+Go to Repo → Settings → Pages
 
-Click Save.
+Under Source, choose:
 
-Access your hosted app at:
+Branch: main
 
-arduino
-Copy
-Edit
-https://your-username.github.io/SpotifyWebAPI/
-🧪 5. Run the App
-Open the app in your browser.
+Folder: / (root)
 
-Enter your:
+Click Save
 
-Client ID and Client Secret (from Spotify Developer Dashboard).
+Your live app will be at:
+```
+https://your-username.github.io/Spotify-Web-API/
+```
 
-Click Request Authorization.
+🚀 How to Use
+Open the app in your browser
 
-You will be redirected to Spotify login screen → allow permissions.
+Enter your Client ID and Client Secret
 
-You’ll return to the app where you can:
+Click Request Authorization
 
-See your devices
+Log in with Spotify and allow permissions
 
-Select playlists
+Once redirected:
 
-Play, pause, shuffle, skip, etc.
+Select a device
 
-⚠️ Important Notes
-🔐 Client Secret is only stored in localStorage. For production apps, NEVER expose it on frontend.
+Pick a playlist
 
-🔁 Tokens are automatically refreshed using the refresh token mechanism.
+Use playback controls (Play, Pause, Next, Shuffle)
 
-🔒 Playback control only works with Spotify Premium.
+Save quick-access buttons for device+playlist combos
 
-🎧 Make sure Spotify is running on at least one device before using this app.
+Click Logout to clear session
 
-📚 APIs Used
+
+🔐 Authorization Flow
+
+Implements Authorization Code Flow with Refresh Token
+
+Tokens are stored securely in localStorage (for demo only)
+
+Automatically refreshes tokens when expired
+
+Client Secret is never shared with backend
+
+
+📦 APIs Used
+
 https://accounts.spotify.com/authorize
 
 https://accounts.spotify.com/api/token
+
+https://api.spotify.com/v1/me/player/devices
 
 https://api.spotify.com/v1/me/player/play
 
@@ -116,22 +147,39 @@ https://api.spotify.com/v1/me/player/pause
 
 https://api.spotify.com/v1/me/player/next
 
-https://api.spotify.com/v1/me/player/devices
+https://api.spotify.com/v1/me/player/previous
 
 https://api.spotify.com/v1/me/playlists
 
-and more...
+https://api.spotify.com/v1/playlists/{playlist_id}/tracks
 
-💡 Features
-🎵 Control Spotify playback (Play, Pause, Next, Prev)
+https://api.spotify.com/v1/me/player/currently-playing
 
-🔁 Shuffle songs
 
-🎧 Switch between Spotify-connected devices
+🧼 Logout Functionality
 
-📜 View and select from your playlists
+Clears all stored values:
 
-🎨 View current track name, artist, and album art
+client_id
 
-💾 Save your favorite device+playlist combos as buttons
+client_secret
 
+access_token
+
+refresh_token
+
+Redirects back to login page with cleared session
+
+
+📄 License
+
+This project is licensed under the MIT License
+
+
+🙌 Acknowledgements
+
+Spotify Developer Documentation
+
+Bootstrap 5
+
+MDN Web Docs - JavaScript
