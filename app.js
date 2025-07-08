@@ -1,6 +1,6 @@
 var redirect_uri = window.location.href.includes('localhost') 
     ? "http://localhost:5500/index.html" 
-    : "https://my-awesome-app.vercel.app"; 
+    : "https://shreyasp10.github.io/Sportify-Web-API/"; 
 
 var client_id = "";
 var client_secret = "";
